@@ -7,34 +7,35 @@ function total_runs_team(){
     .then(function(data){
         for(let team in data){
             runsScored.push([team,data[team]]);
-            Highcharts.chart("total-runs-scored",{
-                chart: {
-                    type: "column"
-                },
-                title: {
-                    text: "Total Runs scored"
-                },
-                xAxis: {
-                    type: "category",
-                    title: {
-                        text: "Teams Played"
-                    }
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: "No. of Games Played"
-                    }
-                },
-                series: [
-                    {
-                        colorByPoint: true,
-                        name: "teams",
-                        data: runsScored
-                    }
-                ]
-            });
         }
+
+        Highcharts.chart("total-runs-scored",{
+            chart: {
+                type: "column"
+            },
+            title: {
+                text: "Total Runs scored"
+            },
+            xAxis: {
+                type: "category",
+                title: {
+                    text: "Teams Played"
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: "No. of Games Played"
+                }
+            },
+            series: [
+                {
+                    colorByPoint: true,
+                    name: "teams",
+                    data: runsScored
+                }
+            ]
+        });
     });
 }
 
@@ -48,33 +49,34 @@ function top_rcb_batsmen(){
     .then(function(data){
         for(let batsmen in data){
             topBatsmen.push([batsmen,data[batsmen]]);
-            Highcharts.chart("top-rcb-batsmen",{
-                chart: {
-                    type: "bar"
-                },
-                title: {
-                    text: "Top Batsmen"
-                },
-                xAxis: {
-                    type: "category",
-                    title: {
-                        text: "Batsmen"
-                    }
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: "Runs Scored"
-                    }
-                },
-                series: [
-                    {
-                        name: "batsmen",
-                        data: topBatsmen
-                    }
-                ]
-            });
         }
+
+        Highcharts.chart("top-rcb-batsmen",{
+            chart: {
+                type: "bar"
+            },
+            title: {
+                text: "Top Batsmen"
+            },
+            xAxis: {
+                type: "category",
+                title: {
+                    text: "Batsmen"
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: "Runs Scored"
+                }
+            },
+            series: [
+                {
+                    name: "batsmen",
+                    data: topBatsmen
+                }
+            ]
+        });
     });
 }
 
@@ -87,34 +89,35 @@ function foreign_umpires(){
     .then(function(data){
         for(let ump in data){
             umpires.push([ump,data[ump]]);
-            Highcharts.chart("foreign-umpires",{
-                chart: {
-                    type: "column"
-                },
-                title: {
-                    text: "Foreign Umpires"
-                },
-                xAxis: {
-                    type: "category",
-                    title: {
-                        text: "Umpires"
-                    }
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: "Countries"
-                    }
-                },
-                series: [
-                    {
-                        colorByPoint: true,
-                        name: "No. of umpires",
-                        data: umpires
-                    }
-                ]
-            });
         }
+
+        Highcharts.chart("foreign-umpires",{
+            chart: {
+                type: "column"
+            },
+            title: {
+                text: "Foreign Umpires"
+            },
+            xAxis: {
+                type: "category",
+                title: {
+                    text: "Umpires"
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: "Countries"
+                }
+            },
+            series: [
+                {
+                    colorByPoint: true,
+                    name: "No. of umpires",
+                    data: umpires
+                }
+            ]
+        });
     });
 }
 
