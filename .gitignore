@@ -1,0 +1,6 @@
+# Files to ignore
+data_source/
+notebook_file/
+.ipynb_checkpoints/
+.vscode/
+python_files/
