@@ -15,7 +15,12 @@ clone this repo
 
 move to the folder  dataproblem-IPL-shriyahireholi
 
-run python3 server:
+1. generating the json data files:
+```bash  
+python3 ipl_project.py 
+```
+
+2. run python3 server:
 
 ```bash
 python3 -m http.server
