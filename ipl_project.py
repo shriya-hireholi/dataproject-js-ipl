@@ -26,12 +26,13 @@ def top_batsman_rcb():
         rcb_batsman = {}
         next(csv_reader)
         for row in csv_reader:
-            team = row[2]
+            rcb_team = row[2]
             batsman = row[6]
             batsman_run = int(row[15])
-            if team == 'Royal Challengers Bangalore':
-                rcb_batsman[batsman] = rcb_batsman.get(batsman, batsman_run)
-                + batsman_run
+            if rcb_team == 'Royal Challengers Bangalore':
+                rcb_batsman[batsman] = rcb_batsman.get(
+                    batsman, batsman_run
+                    ) + batsman_run
 
     with open("json_data_files/TopRcbBatsmen.json", "w") as fp:
         json.dump(rcb_batsman, fp)
