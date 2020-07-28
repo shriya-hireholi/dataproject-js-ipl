@@ -22,4 +22,6 @@ python3 -m http.server
 ```
 Click on the url to view the charts which will be displayed on your browser.
 
-Thank you!
+Heroku deployent:
+
+link: https://js-dataproject.herokuapp.com/
