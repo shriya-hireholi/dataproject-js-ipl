@@ -2,7 +2,6 @@
 
 import csv
 import json
-from ipl_teams import teams as team_list
 
 
 def total_runs_scored():
@@ -31,7 +30,7 @@ def top_batsman_rcb():
             batsman_run = int(row[15])
             if rcb_team == 'Royal Challengers Bangalore':
                 rcb_batsman[batsman] = rcb_batsman.get(
-                    batsman, batsman_run
+                    batsman, 0
                     ) + batsman_run
 
     with open("json_data_files/TopRcbBatsmen.json", "w") as fp:
@@ -58,46 +57,27 @@ def foreign_umpire():
 def matches_team_season():
     with open('data_source/matches.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
-        matches = []
-        for i in csv_reader:
-            matches.append(i)
+        next(csv_reader)
+        teams_season = {}
+        for row in csv_reader:
+            season = int(row[1])
+            team1 = row[4]
+            team2 = row[5]
+            teams_season[season] = {}
 
-    with open('data_source/deliveries.csv', 'r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        deliveries = []
-        for i in csv_reader:
-            deliveries.append(i)
+            for season in teams_season:
+                teams_season[season][team1] = teams_season[season].get(
+                    team1, 0
+                    )+1
+                teams_season[season][team2] = teams_season[season].get(
+                    team2, 0
+                    )+1
 
-    def merge(lst1, lst2):
-        return [a + [b[1]] for (a, b) in zip(lst1, lst2)]
-
-    mergedlst = merge(deliveries, matches)
-
-    i = 0
-    s = {}
-
-    for r in mergedlst:
-        if i == 0:
-            i += 1
-        else:
-            if r[21] not in s:
-                if r[21] not in s:
-                    s[r[21]] = {}
-
-    for i in team_list:
-        for key in sorted(s):
-            s[key][i] = 0
-
-    for x in matches:
-        if x[1] in s and x[4] in s[x[1]] and x[5] in s[x[1]]:
-            s[x[1]][x[4]] += 1
-            s[x[1]][x[5]] += 1
-
-    s = dict(sorted(s.items()))
-    # print(s)
+    teams_season = dict(sorted(teams_season.items()))
+    # print(teams_season)
 
     with open("json_data_files/TeamsSeasonsGames.json", "w") as fp:
-        json.dump(s, fp)
+        json.dump(teams_season, fp)
 
 
 def main():
