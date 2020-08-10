@@ -63,10 +63,10 @@ def matches_team_season():
             season = int(row[1])
             team1 = row[4]
             team2 = row[5]
-            
+
             if season not in teams_season:
                 teams_season[season] = {}
-            
+
             teams_season[season][team1] = teams_season[season].get(
                 team1, 0)+1
             teams_season[season][team2] = teams_season[season].get(
@@ -77,7 +77,6 @@ def matches_team_season():
 
     with open("json_data_files/TeamsSeasonsGames.json", "w") as fp:
         json.dump(teams_season, fp)
-
 
 
 def main():
